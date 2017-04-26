@@ -10,60 +10,63 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.mx.badcalculator.MainActivity">
 
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="128dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/tvMain"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <RelativeLayout
         android:layout_width="320dp"
         android:layout_height="256dp"
-        android:id="@+id/relativeLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="48dp">
-
-        <Button
-            android:text="4"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:id="@+id/num4"
-            android:layout_below="@+id/num7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+        android:id="@+id/keypad"
+        android:layout_marginTop="64dp"
+        android:layout_below="@+id/tvMain"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:text="5"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/num5"
-            android:layout_alignBottom="@+id/num4"
-            android:layout_toRightOf="@+id/num4"
-            android:layout_toEndOf="@+id/num4"
-            android:layout_below="@+id/num7" />
+            android:id="@+id/bt5"
+            android:layout_alignBottom="@+id/bt4"
+            android:layout_toRightOf="@+id/bt4"
+            android:layout_toEndOf="@+id/bt4"
+            android:layout_below="@+id/bt7" />
 
         <Button
             android:text="6"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/num6"
-            android:layout_alignBottom="@+id/num5"
-            android:layout_toRightOf="@+id/num5"
-            android:layout_toEndOf="@+id/num5"
-            android:layout_alignTop="@+id/num5" />
+            android:id="@+id/bt6"
+            android:layout_alignBottom="@+id/bt5"
+            android:layout_toRightOf="@+id/bt5"
+            android:layout_toEndOf="@+id/bt5"
+            android:layout_alignTop="@+id/bt5" />
 
         <Button
             android:text="8"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/num8"
-            android:layout_above="@+id/num4"
-            android:layout_toRightOf="@+id/num7"
-            android:layout_toEndOf="@+id/num7" />
+            android:id="@+id/bt8"
+            android:layout_above="@+id/bt4"
+            android:layout_toRightOf="@+id/bt7"
+            android:layout_toEndOf="@+id/bt7" />
 
         <Button
             android:text="9"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/num9"
-            android:layout_above="@+id/num6"
-            android:layout_toRightOf="@+id/num5"
-            android:layout_toEndOf="@+id/num5" />
+            android:id="@+id/bt9"
+            android:layout_above="@+id/bt6"
+            android:layout_toRightOf="@+id/bt5"
+            android:layout_toEndOf="@+id/bt5" />
 
         <Button
             android:text="C"
@@ -71,8 +74,8 @@
             android:layout_height="64dp"
             android:id="@+id/btClear"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/num9"
-            android:layout_toEndOf="@+id/num9" />
+            android:layout_toRightOf="@+id/bt9"
+            android:layout_toEndOf="@+id/bt9" />
 
         <Button
             android:text="/"
@@ -80,62 +83,44 @@
             android:layout_height="64dp"
             android:id="@+id/btDiv"
             android:layout_below="@+id/btClear"
-            android:layout_toRightOf="@+id/num6"
-            android:layout_toEndOf="@+id/num6" />
+            android:layout_toRightOf="@+id/bt6"
+            android:layout_toEndOf="@+id/bt6" />
 
         <Button
             android:text="x"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/dtMul"
+            android:id="@+id/btMul"
             android:layout_below="@+id/btClear"
             android:layout_toRightOf="@+id/btDiv"
             android:layout_toEndOf="@+id/btDiv" />
 
         <Button
-            android:text="1"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:id="@+id/num1"
-            android:layout_below="@+id/num4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
             android:text="2"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/num2"
-            android:layout_above="@+id/num0"
-            android:layout_toRightOf="@+id/num1"
-            android:layout_toEndOf="@+id/num1" />
+            android:id="@+id/bt2"
+            android:layout_above="@+id/bt0"
+            android:layout_toRightOf="@+id/bt1"
+            android:layout_toEndOf="@+id/bt1" />
 
         <Button
             android:text="3"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/num3"
-            android:layout_above="@+id/num0"
-            android:layout_toRightOf="@+id/num2"
-            android:layout_toEndOf="@+id/num2" />
+            android:id="@+id/bt3"
+            android:layout_above="@+id/bt0"
+            android:layout_toRightOf="@+id/bt2"
+            android:layout_toEndOf="@+id/bt2" />
 
         <Button
             android:text="+"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:id="@+id/vtPlu"
-            android:layout_below="@+id/dtMul"
+            android:id="@+id/btPlu"
+            android:layout_below="@+id/btMul"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="7"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:id="@+id/num7"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
         <Button
             android:text="="
@@ -150,7 +135,7 @@
             android:text="0"
             android:layout_width="128dp"
             android:layout_height="64dp"
-            android:id="@+id/num0"
+            android:id="@+id/bt0"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -161,31 +146,46 @@
             android:layout_height="64dp"
             android:id="@+id/btDot"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/num2"
-            android:layout_toEndOf="@+id/num2" />
+            android:layout_toRightOf="@+id/bt2"
+            android:layout_toEndOf="@+id/bt2" />
 
         <Button
             android:text="-"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:id="@+id/btMin"
-            android:layout_alignBottom="@+id/num3"
-            android:layout_toRightOf="@+id/num6"
-            android:layout_toEndOf="@+id/num6"
-            android:layout_below="@+id/num6" />
+            android:layout_alignBottom="@+id/bt3"
+            android:layout_toRightOf="@+id/bt6"
+            android:layout_toEndOf="@+id/bt6"
+            android:layout_below="@+id/bt6" />
+
+        <Button
+            android:text="4"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/bt4"
+            android:layout_above="@+id/bt2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="7"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/bt7"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/bt1"
+            android:layout_below="@+id/bt5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
-
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="256dp"
-        android:layout_alignParentTop="true"
-        android:id="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
