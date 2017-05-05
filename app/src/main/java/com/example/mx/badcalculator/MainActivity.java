@@ -2,282 +2,369 @@ package com.example.mx.badcalculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import static java.sql.DriverManager.println;
+import static java.sql.Types.NULL;
 
 public class MainActivity extends AppCompatActivity {
 
     char[] build = new char[512];
-    double a,b,c;
-    int count = 0;
-    int fun = 0;
+    String[] entry = new String[64];
+
+    String[] modE = new String[64];
+    double[] c = new double[64];
+    
+    double runTot, curNum, calNum;
+    boolean runningTotal = false, justEqualed = false;
+
+    int bCount = 0;//Build Count
+    int eCount = 0;//Entry Count
+    int mCount = 0;
+    String fun;
+    
     String bld;
-    TextView screen;
-    boolean many;
+
+    StringBuilder dis;
+    
+    TextView wrkScreen, ansScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       RelativeLayout kp = (RelativeLayout) findViewById(R.id.keypad);
+        wrkScreen = (TextView) findViewById(R.id.tv1);
+        ansScreen = (TextView) findViewById(R.id.tv2);
+
+        RelativeLayout kp = (RelativeLayout) findViewById(R.id.keypad);
+
+        ///////////////////////////////////
+                //NUM PAD BUTTONS//
+        ///////////////////////////////////
 
         Button num0 = (Button) findViewById(R.id.bt0);
         num0.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build0();
-                refresh();
+                buildIt('0');
+                numBtRefresh();
             }
         });
         Button num1 = (Button) findViewById(R.id.bt1);
         num1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build1();
-                refresh();
+                buildIt('1');
+                numBtRefresh();
             }
         });
         Button num2 = (Button) findViewById(R.id.bt2);
         num2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build2();
-                refresh();
+                buildIt('2');
+                numBtRefresh();
             }
         });
         Button num3 = (Button) findViewById(R.id.bt3);
         num3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build3();
-                refresh();
+                buildIt('3');
+                numBtRefresh();
             }
         });
         Button num4 = (Button) findViewById(R.id.bt4);
         num4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build4();
-                refresh();
+                buildIt('4');
+                numBtRefresh();
             }
         });
         Button num5 = (Button) findViewById(R.id.bt5);
         num5.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build5();
-                refresh();
+                buildIt('5');
+                numBtRefresh();
             }
         });
         Button num6 = (Button) findViewById(R.id.bt6);
         num6.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build6();
-                refresh();
+                buildIt('6');
+                numBtRefresh();
             }
         });
         Button num7 = (Button) findViewById(R.id.bt7);
         num7.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build7();
-                refresh();
+                buildIt('7');
+                numBtRefresh();
             }
         });
         Button num8 = (Button) findViewById(R.id.bt8);
         num8.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build8();
-                refresh();
+                buildIt('8');
+                numBtRefresh();
             }
         });
         Button num9 = (Button) findViewById(R.id.bt9);
         num9.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                build9();
-                refresh();
+                buildIt('9');
+                numBtRefresh();
             }
         });
         Button dot = (Button) findViewById(R.id.btDot);
         dot.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                buildDot();
-                refresh();
+                buildIt('.');
+                numBtRefresh();
             }
         });
-        Button clr = (Button) findViewById(R.id.btClear);
+
+        /////////////////////////////////////
+                //OPERATION BUTTONS//
+        /////////////////////////////////////
+
+        Button plus = (Button) findViewById(R.id.btPlu);//PLUS
+        plus.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                try {
+                    fun = "+";
+                    if (!runningTotal) {//Not a Running Total (First Operation Button Pressed)
+                        runTot=0;
+                        setCurrentNum();
+                        setRunT(curNum);
+                        addEntry(String.valueOf(curNum));
+                        addEntry(fun);
+                        setWrkScreen(getEntries());
+                        runningTotal = true;
+                    } else {//There is a Running Total
+                        setRunT(curNum);
+                        setCurrentNum();
+                        addEntry(String.valueOf(curNum));
+                        addEntry(fun);
+                        setWrkScreen(getEntries());
+                        setAnsScreen(String.valueOf(runTot));
+                    }
+
+                }catch(Exception e){System.out.println(e);}
+            }
+        });
+
+        ///////////////////////////////////
+                //CONTROL BUTTONS//
+        ///////////////////////////////////
+
+        Button clr = (Button) findViewById(R.id.btClear);//CLEAR BUTTON
         clr.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 clearScreen();
-                refresh();
+                resetBuild();
+                resetEntries();
+                runTot=0;
+                runningTotal=false;
+                justEqualed=false;
             }
         });
-        Button eqls = (Button) findViewById(R.id.btEq);
+        Button eqls = (Button) findViewById(R.id.btEq);//EQUALS BUTTON
         eqls.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 clearScreen();
-                setB();
-                calc();
-                //screen.setText(String.valueOf(c));
+                calculate();
             }
         });
-        Button plus = (Button) findViewById(R.id.btPlu);
-        plus.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                clearScreen();
-                if(many){
-                    a += Double.parseDouble(bld);
-                }else{
-                    setA();
-                }
-                setFun(1);
-                screen.setText(String.valueOf(a+" + "));
-                many = true;
-            }
-        });
-        Button min = (Button) findViewById(R.id.btMin);
-        min.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                clearScreen();
-                setA();
-                setFun(2);
-                screen.setText(String.valueOf(a+" - "));
-                many = true;
-            }
-        });
-        Button mult = (Button) findViewById(R.id.btMul);
-        mult.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                clearScreen();
-                setA();
-                setFun(3);
-                screen.setText(String.valueOf(a+" X "));
-                many = true;
-            }
-        });
-        Button div = (Button) findViewById(R.id.btDiv);
-        div.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                clearScreen();
-                setA();
-                setFun(4);
-                screen.setText(String.valueOf(a+" / "));
-                many = true;
-            }
-        });
-
-
-        screen = (TextView) findViewById(R.id.tvMain);
-
-
-        //screen.setText("");
-
-
     }
 
-    void build0(){
-        build[count] = '0';
-        count++;
+    /////////////////////////////
+            //FUNCTIONS//
+    /////////////////////////////
+
+    void buildIt(char n){//Enters Numbers and the '.' character into the Build Array
+        build[bCount] = n;
+        bCount++;
     }
-    void build1(){
-        build[count] = '1';
-        count++;
+    void numBtRefresh(){//Refreshes Top (Work) Screen, Sets Displayed String to the New Build Array
+        bld = new String(build);
+        if(!runningTotal){//If there hasn't been an operation yet
+            setWrkScreen(bld);
+        }else{
+            setWrkScreen(getEntries(bld));
+            setAnsScreen(String.valueOf(getRunT(Double.parseDouble(bld))));
+        }
     }
-    void build2(){
-        build[count] = '2';
-        count++;
+    void setCurrentNum(){
+        curNum = Double.parseDouble(bld);
+        resetBuild();
     }
-    void build3(){
-        build[count] = '3';
-        count++;
-    }
-    void build4(){
-        build[count] = '4';
-        count++;
-    }
-    void build5(){
-        build[count] = '5';
-        count++;
-    }
-    void build6(){
-        build[count] = '6';
-        count++;
-    }
-    void build7(){
-        build[count] = '7';
-        count++;
-    }
-    void build8(){
-        build[count] = '8';
-        count++;
-    }
-    void build9(){
-        build[count] = '9';
-        count++;
-    }
-    void buildDot(){
-        build[count] = '.';
-        count++;
-    }
-    void clearScreen(){
-        for(int i=0;i<count;i++){
+    void resetBuild(){//Empties Build Array
+        for(int i=0;i<=bCount;i++){
             build[i] = ' ';
         }
-        count=0;
+        bCount=0;
     }
-    void refresh(){
-        bld = new String(build);
-        screen.setText(bld);
+
+    void addEntry(String s){
+        entry[eCount]=s;
+        eCount++;
+        Log.d("Add Entry", "eCount:" + eCount + "\nentry" + entry[eCount]);
     }
-    void setA(){
-        a = Double.parseDouble(bld);
+    String getEntries(){
+        dis  = new StringBuilder();
+        for(int i = 0; i < eCount; i++){
+            dis.append(entry[i]);
+        }
+        return dis.toString();
     }
-    void setB(){
-        b = Double.parseDouble(bld);
+    String getEntries(String s){
+        dis  = new StringBuilder();
+        for(int i = 0; i < eCount+1; i++){
+            dis.append(entry[i]);
+        }
+        dis.append(s);
+        return dis.toString();
     }
-    void setFun(int x){
-        if(x==1){
+    void resetEntries(){
+        for(int i=0;i<eCount;i++){
+            entry[i] = " ";
+        }
+        eCount = 0;
+    }
+
+    void clearScreen(){
+        setWrkScreen(" ");
+        setAnsScreen(" ");
+    }
+    void setWrkScreen(String s){wrkScreen.setText(s);}
+    void setAnsScreen(String s){
+        s = "= " + s;
+        ansScreen.setText(s);
+    }
+
+    void setRunT(double n){//Sets the Running Total (double runTot)
+        if(fun.equals("+")){//Plus
+            runTot = runTot + n;
+        }else if(fun.equals("-")){//Minus
+            runTot = runTot - n;
+        }else if(fun.equals("x")){//Multiply
+            if(runTot!=0){
+                runTot = runTot * n;
+            }else {
+                runTot = n;
+            }
+        }else if(fun.equals("/")) {//Divide
+            if (runTot != 0) {
+                runTot = runTot / n;
+            } else {
+                runTot = n;
+            }
+        }
+    }
+
+    double getRunT(double n){
+        if(fun.equals("+")){//Plus
+            return runTot + n;
+        }else if(fun.equals("-")){//Minus
+            return runTot - n;
+        }else if(fun.equals("x")){//Multiply
+            return runTot * n;
+        }else if(fun.equals("/")) {//Divide
+            return runTot / n;
+        }else{return 0;}
+    }
+
+    double calculate(){
+        if(fun.equals("+")){//Plus
+            return runTot + curNum;
+        }else if(fun.equals("-")){//Minus
+            return runTot + curNum;
+        }else if(fun.equals("x")){//Multiply
+            return runTot + curNum;
+        }else if(fun.equals("./")) {//Divide
+            return runTot + curNum;
+        }else
+            return 0;
+    }
+}
+
+//OLD PLUS BUTTON
+                /*
+                setFun(1);
+                if(!runningTotal){//No Running Total
+                    setCurrentNum();//Sets curNum to the value in build
+                    wrkScreen.setText(String.valueOf(curNum + " + "));//Sets Top Screen
+                    runningTotal = true;//Running Total is now TRUE
+                }else{
+                    setRunT(curNum);//Sets runTot to runTot + curNum(the last number entered)
+                    setCurrentNum();//Sets curNum to the value in build
+                    //wrkScreen.setText(String.valueOf(runTot + " + " + curNum));//Sets Top Screen
+
+                    ansScreen.setText(String.valueOf("= " + calc()));//Sets Bottom Screen
+                }
+                resetBuild();//Clears the build array
+                */
+
+//OLD setFun Method
+
+/*
+    void setFun(int f){//Sets the Function(Fun) Value for calculation
+        if(f==1){//Plus
             fun = 1;
-        }else if(x==2){
+        }else if(f==2){//Minus
             fun = 2;
-        }else if(x==3){
+        }else if(f==3){//Multiply
             fun = 3;
-        }else if(x==4){
+        }else if(f==4){//Divide
             fun = 4;
         }
-    }
-    void calc(){
-        if(fun==1){
-            c = a+b;
-            screen.setText(String.valueOf(a+" + "+b+" = "+c));
-        }else if(fun==2){
-            c = a-b;
-            screen.setText(String.valueOf(a+" - "+b+" = "+c));
-        }else if(fun==3){
-            c = a*b;
-            screen.setText(String.valueOf(a+" X "+b+" = "+c));
-        }else if(fun==4){
-            c = a/b;
-            screen.setText(String.valueOf(a+" / "+b+" = "+c));
-        }else{
-            c = b;
+    }*/
+
+//BETTER CALCULATE FUNCTION THAT WILL TAKE TOO LONG TO MAKE
+
+    /*
+    double calculate(){
+        //modE = entry;
+        for(int i=0;i<eCount;i++){
+            try {
+                if (entry[i].equals("x") > 0) {
+                    modE[mCount] = String.valueOf(Double.parseDouble(entry[i - 1]) * Double.parseDouble(entry[i - 1]));
+                } else if (entry[i].equals("/") > 0) {
+                    modE[mCount] = String.valueOf(Double.parseDouble(entry[i - 1]) / Double.parseDouble(entry[i - 1]));
+                }
+            }catch (Exception e){System.out.println(e);}
         }
-        a = c;
-    }
 
 
-}
+
+
+        for(int i=0;i<eCount;i++){
+            if(entry[i].equals("+")>0){
+
+            }else if(entry[i].equals("-")>0){
+
+            }else if(entry[i].equals("*")>0){
+
+            }else if(entry[i].equals("/")>0){
+
+            }
+        }
+
+        return 0;
+    }*/
