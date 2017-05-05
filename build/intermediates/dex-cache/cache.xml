@@ -3,111 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\58e4446c8ccc377e2beca180473658c2d1aadfc4\output\jars\classes.jar"
+        jar="/home/mx/AndroidStudioProjects/BadCalculator/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_42137c57197dec0c7f28a603ab7009eec685b8d6\classes.dex" />
+        sha1="800d8cba336d2801dc186f2aa28be03765eeca69">
+        <dex dex="/home/mx/AndroidStudioProjects/BadCalculator/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_31afcd0dedc0961032b62bc4ff5b6276570a296c/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\4a8064a59eeff1c2133c7b47519b90b4801489bc\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_32f3588a4a6de51d583e9d5bd68af774d3f24a61\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\0b969ab54321997a8b2e7e4dad82cde814abe951\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_33912c5309920b8415474d6e312800914d04c072\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\58f3b2faf05787e7d24e5437523c13ca97eff234\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_aaefff7ead0d55542c87f3fe036ea1396749f780\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\460b28afa97036c6913028297db04debc22eafff\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cdd8f0ce31591b56ff7093f3cbd27e10fda3ca1c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CS\android-projects\BadCalculator\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="861df9b0bf78c177fa9347fab56fa9f0ac70c80b">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_08b863f50595c353893a9814a5d3975924216f11\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\ef716af4e1fa6d1a4e1843980f48b851954b8c4f\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1c2b5644c98dd75148407a3b0c197575dfdc4e1d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\22754f24cc6dd8c25cebf4b4f16a4a463feec47a\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5a207f1476d92b3782586bd75789bb4d2e2716a7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CS\android-projects\BadCalculator\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="/home/mx/AndroidStudioProjects/BadCalculator/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_18de81fcb37802f80f6d426716acc4258296cf86\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.1_2536d71a459579c5ec2da9f32a170b5f619dc151\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\2709448b1812f4ad7548b3bdcd97c7172c9437ff\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_91ddefeb61a7fc74a10f0238b8c06f133747a070\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\MaximillianPetersen\.android\build-cache\0c6a54e742de07655501a03369414ae61ddc5a0e\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="C:\CS\android-projects\BadCalculator\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_89c0afcaa527338ab6a757a38d19cd3f27226572\classes.dex" />
+        <dex dex="/home/mx/AndroidStudioProjects/BadCalculator/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c2b04bae1c8b0c6e8cc6a64807a148b366023eef/classes.dex" />
     </item>
 
 </items>
